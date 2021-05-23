@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+    <title>AJAX with JavaScript</title>
+    <script>
+        // create XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+        // call back function
+        xhr.onreadystatechange = function () {
+          // final change of state
+          if(xhr.readyState === 4) {
+              document.getElementById('ajax').innerHTML = xhr.responseText;
+          }
+        };
+        // open a request
+        xhr.open('GET', 'sidebar.html');
+        // onclick function
+        function sendAJAX() {
+            // send the request
+            xhr.send();
+            // button disappear
+            document.getElementById('load').style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="grid-container centered">
+        <div class="grid-100">
+            <div class="contained">
+                <div class="heading">
+                    <h1>Bring on the AJAX</h1>
+                    <button id="load" onclick="sendAJAX()">Bring it!</button>
+                </div>
+                <div id="ajax">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
